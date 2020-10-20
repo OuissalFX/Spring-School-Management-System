@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	
+	<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+     crossorigin="anonymous" />
+     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<form class="form form--primary" method="POST" th:action="@{/authenticateTheUser}">
+		<div class="form__field" th:if="${param.error}">
+							
+            <p class="form__field__paragraph--alert">invalid username or password &#9888</p>
+       
+		</div>
+		<div class="form__field" th:if="${param.logout }">
+							
+            <p class="form__field__paragraph--alert">you've been logged out.</p>
+       
+		</div>
+        <div class="form__field">
+            <label for="username">
+                <i class="fas fa-user"></i> 
+                username 
+                <span>*</span>
+            </label>
+            <input  name="username" id="username...">
+        </div>
+
+        <div class="form__field">
+            <label for="password">
+                <i class="fas fa-unlock-alt"></i> 
+                password 
+                <span>*</span>
+            </label>
+            <input type="password" name="password" id="password">
+        </div>
+        
+        <button type="submit" class="btn-common btn-common--green"> log in</button>
+   
+			</form>
+</body>
+</html>

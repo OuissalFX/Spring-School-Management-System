@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+	<title>Student Directory</title>
+</head>
+
+<body>
+
+ 
+<div class="main-content">
+  <div th:replace="fragments/navigation.html :: navigation"> </div>
+   <form method="GET" th:action="@{/students/search}" class="form form--secondary">
+        <input type="text" name="theSearchName" placeholder="Last Name..." >
+        <input type="submit" value="Search" class="btn-common btn-common--green" /> 
+        <a class="btn-common btn-common--green btn-common--large" th:href="@{/students/showFormForAdd}"> add new student</a>
+    </form>
+   <div class="table">
+       
+        <div class="table__columns">
+            <span>full name</span>
+            <span>class level</span>
+            <span>courses</span>
+            <span>action</span>
+        </div>
+
+        <div class="table__rows" th:each="tempStudent: ${students}">
+         	<span th:text="${tempStudent.firstName + ' ' + tempStudent.lastName }" />
+         	  <span th:text="${tempStudent.classLevel.className}" />
+         	  <span>
+         	   <a class="btn-common btn-common--green btn-common--large"
+         	    th:href="@{/students/showCourses(studentId=${tempStudent.id})}">
+         	    show courses
+         	    </a>
+         	    </span>
+         	  <span>
+         	   <a class="btn-common btn-common--green btn-common--small"
+         	    th:href="@{/students/showFormForUpdate(studentId=${tempStudent.id})}">
+         	    update
+         	    </a>
+         	    
+         	  <a class ="btn-common btn-common--green btn-common--small" 
+         	  th:href="@{/students/delete(studentId=${tempStudent.id})}">
+         	  delete</a>
+         	  </span>
+         	  
+           
+        </div>
+        </div>
+   
+	</div> 
+ 
+	
+</body>
+</html>
+
+
+

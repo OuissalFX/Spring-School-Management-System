@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+ <div th:fragment="navigation" class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+        <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon"></span>
+        </label>
+
+        <div class="navigation__background"></div>
+
+        <nav class="navigation__nav">
+            <ul class="navigation__list">
+                <li class="navigation__item"><a th:href="@{/professors/list}" class="navigation__link">professor service</a></li>
+                <li class="navigation__item"><a th:href="@{/students/list}" class="navigation__link">student service</a></li>
+                <li class="navigation__item"><a th:href="@{/courses/list}" class="navigation__link">course service</a></li>
+                <li class="navigation__item"><a th:href="@{/classLevels/list}" class="navigation__link">class service</a></li>
+                <li class="navigation__item">
+                <form class="form form--tertiary" th:action="@{/logout}" method="POST">
+                    <input type="submit" value="logout">
+                </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+</html>

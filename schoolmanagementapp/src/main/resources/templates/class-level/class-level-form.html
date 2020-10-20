@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+	<title>Add Class Level</title>
+</head>
+
+
+<body>
+		<div th:replace="fragments/navigation.html :: navigation"> </div>
+		<form class="form form--primary"  th:action="@{/classLevels/save}"
+			  th:object="${classLevel}" method="POST">
+		 <input  name="id" id="id" th:field="*{id}" type="hidden">
+        
+		<div class="form__field">
+            <label for="classname">
+                 last name :
+            </label>
+            <input  name="classname" id="classname" th:field="*{className}" placeholder="Class Name">
+        </div>
+       
+        <button type="submit" class="btn-common btn-common--green"> submit</button>
+   
+			</form>
+	 
+	 <a th:href="@{/classLevels/list}" class="link-common">back to class levels list</a>
+	
+
+</body>
+
+
+
+
+</html>

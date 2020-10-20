@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+
+	<title>Class Level Directory</title>
+</head>
+
+<body>
+
+ 		<div th:replace="fragments/navigation.html :: navigation"> </div>
+<div class="main-content">
+ 
+ 	<a th:href="@{/classLevels/list}" class="link-common">back to class levels list</a>
+   <div class="table">
+       
+        <div class="table__columns">
+        	<span>student id</span>
+            <span>first name</span>
+            <span>last name </span>
+            <span>class </span>
+           
+        </div>
+
+        <div class="table__rows" th:each="tempStudent: ${students}">
+         	<span th:text="${tempStudent.id}" />
+            <span th:text="${tempStudent.firstName}" />
+            <span th:text="${tempStudent.lastName}" />
+            <span th:text="${tempStudent.classLevel.className}" />
+            
+        </div>
+        </div>
+   
+	</div> 
+ 
+	
+</body>
+</html>
+
+
+

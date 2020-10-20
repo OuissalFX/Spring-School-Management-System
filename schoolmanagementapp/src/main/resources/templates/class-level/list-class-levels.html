@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+	<title>Class Level Directory</title>
+</head>
+
+<body>
+		<div th:replace="fragments/navigation.html :: navigation"> </div>
+ 
+<div class="main-content">
+ <form method="GET" th:action="@{/classLevels/search}" class="form form--secondary">
+        <input type="text" name="theSearchName" placeholder="Last Name..." />
+        <input type="submit" value="Search" class="btn-common btn-common--green" /> 
+        <a class="btn-common btn-common--green btn-common--large" th:href="@{/classLevels/showFormForAdd}"> add new class Level</a>
+    </form>
+  
+   
+   <div class="table">
+       
+        <div class="table__columns">
+            <span>class name</span>
+            <span>show students </span>
+            <span>action</span>
+        </div>
+
+        <div class="table__rows" th:each="tempClassLevel: ${classLevels}">
+            <span th:text="${tempClassLevel.className}" />
+            <span>     
+            <a class="btn-common btn-common--green" th:href="@{/classLevels/showStudents(classLevelId=${tempClassLevel.id})}">show students</a>
+            </span>
+            <span>
+                <a class="btn-common btn-common--green btn-common--small" th:href="@{/classLevels/showFormForUpdate(classLevelId=${tempClassLevel.id})}">update</a>
+                <a class="btn-common btn-common--green btn-common--small" th:href="@{/classLevels/delete(classLevelId=${tempClassLevel.id})}">delete</a>
+            </span>
+        </div>
+        </div>
+   
+	</div> 
+ 
+	
+</body>
+</html>
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+     <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+	<title>Professor Directory</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/navigation.html :: navigation"> </div> 
+<div class="main-content">
+	<h2 class="heading--secondary" th:text="'professor ' + ${professor.firstName} + ' '+ ${professor.lastName} +'\' s courses'"></h2>
+	<a class="btn-common btn-common--green btn-common--xlarge" th:href="@{/coursesProfessors/showFormForAddCourse(professorId=${professor.id})}"> 
+	add new course to this professesor</a>
+   <a th:href="@{/professors/list}" class="link-common">back to professors list</a>
+   <div class="table">
+       
+        <div class="table__columns">
+            <span>professor name</span>
+            <span>course name </span>
+            <span>action</span>
+        </div>
+
+        <div class="table__rows" th:each="tempCourse: ${professor.courses}">
+         	<span th:text="${professor.firstName + ' ' + professor.lastName}" />
+         	<span th:text="${tempCourse.courseName}" />
+         	<span>
+         	 <a class="btn-common btn-common--green btn-common--large" th:href="@{/coursesProfessors/delete(professorId=${professor.id},courseId=${tempCourse.id})}">
+         	 remove from list
+         	 </a>
+         	 </span>
+           
+        </div>
+        </div>
+   
+	</div> 
+ 
+	
+</body>
+</html>
+
+
+

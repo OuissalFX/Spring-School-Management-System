@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+
+	<title>Add Admin</title>
+</head>
+
+
+<body>
+		<div th:replace="fragments/navigation.html :: navigation"> </div>
+		<form class="form form--primary"  th:action="@{/admins/save}"
+			  th:object="${admin}" method="POST">
+		 <input  name="id" id="id" th:field="*{id}" type="hidden">
+        
+        <div class="form__field">
+            <label for="first-name">
+                 first name :
+            </label>
+            <input  name="firstname" id="firstname" th:field="*{firstName}" placeholder="First Name">
+        </div>
+        
+        <div class="form_field">
+            <label for="lastname">
+                 last name :
+            </label>
+            <input  name="lastName" id="lastname" th:field="*{lastName}" placeholder="Last Name">
+        </div>
+
+		
+        <button type="submit" class="btn-common btn-common--green"> submit</button>
+   
+			</form>
+	 
+	 <a th:href="@{/admins/list}" class="link-common">back to admins list</a>
+	
+
+</body>
+
+
+
+
+</html>

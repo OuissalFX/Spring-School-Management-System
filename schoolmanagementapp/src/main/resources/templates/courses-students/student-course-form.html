@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <th:block th:include="fragments/headerFiles.html :: headerfiles">
+      </th:block>
+
+	<title>Add Course</title>
+</head>
+
+
+<body>
+		<div th:replace="fragments/navigation.html :: navigation"> </div>
+		<form class="form form--primary" th:action="@{/coursesStudents/save}" method="POST"> 
+			<input  name="studentId" type="hidden" th:value="${studentId}">
+        
+		<div class="form__field">
+		<label>choose course:</label>
+	        <select name="courseId">
+	   			 <option th:each="course: ${courses}"
+	            th:value="${course.id}"
+	            th:text="${course.courseName}"
+	           ></option>
+			</select>
+        </div>
+        
+        <div class="form__field">
+            <label for="registrationDate">
+            registration date:
+            </label>
+            <input  name="registrationDate" th:type="date">
+        </div>
+       
+        <button type="submit" class="btn-common btn-common--green"> submit</button>
+   
+			</form>
+	 
+	 <a th:href="@{/courses/list}" class="link-common">back to courses list</a>
+	
+
+</body>
+
+
+
+
+</html>
